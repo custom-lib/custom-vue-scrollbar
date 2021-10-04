@@ -1,0 +1,36 @@
+{
+    "name": "custom-vue-scrollbar",
+    "version": "0.0.5",
+    "license": "MIT",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "/dist"
+    ],
+    "sideEffect": false,
+    "scripts": {
+        "dev": "vite",
+        "build:site": "vite build",
+        "build:lib": "vite build --config vite-lib.config.ts && cp ./types/index.d.ts ./dist"
+    },
+    "peerDependencies": {
+        "lodash-es": "^4.17.21",
+        "vue": "^3.2.13"
+    },
+    "devDependencies": {
+        "@types/lodash-es": "^4.17.5",
+        "@types/stats.js": "^0.17.0",
+        "@vitejs/plugin-vue": "^1.9.2",
+        "@vue/compiler-sfc": "^3.2.19",
+        "rollup-plugin-visualizer": "^5.5.2",
+        "sass": "^1.42.1",
+        "stats.js": "^0.17.0",
+        "typescript": "^4.4.3",
+        "vite": "^2.6.2",
+        "vue-i18n": "^9.2.0-beta.11"
+    },
+    "dependencies": {
+        "lodash-es": "^4.17.21",
+        "vue": "^3.2.19"
+    }
+}

@@ -4,7 +4,7 @@
         :desc="$t('desc')"
         codeSrc="https://github.com/custom-lib/custom-vue-scrollbar/blob/main/website/examples/AutoHeight.vue"
     >
-        <template #opertion>
+        <template #operation>
             <div class="operation">
                 <div class="operation_btn" @click="paragraphCount += 1">
                     <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M942.6 383.8H640.1V81.3c0-44-36-80-80-80h-96.2c-44 0-80 36-80 80v302.5H81.4c-44 0-80 36-80 80V560c0 44 36 80 80 80h302.5v302.5c0 44 36 80 80 80h96.2c44 0 80-36 80-80V640.1h302.5c44 0 80-36 80-80v-96.2c0-44.1-36-80.1-80-80.1z" fill="#31456A"></path></svg>
@@ -16,7 +16,7 @@
         </template>
         <template #default>
             <custom-scrollbar :style="{ maxHeight: '40vh' }" :autoHide="false" throttleType="none">
-                <div v-for="(_, index) in paragraphCount" :style="{ height: '8vh', lineHeight: '8vh' }">
+                <div v-for="(_, index) in paragraphCount" :style="{ height: '8vh', lineHeight: '8vh' }" :key="index">
                     {{ index }}:
                     {{ 
                         paragraphCount < 6 ? `Add ${6 - paragraphCount} more paragraph to show scroller.`

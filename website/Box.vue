@@ -11,8 +11,8 @@
         <div class="box_desc">
             {{ desc }}
         </div>
-        <div class="box_opertion">
-            <slot name="opertion"></slot>
+        <div class="box_operation">
+            <slot name="operation"></slot>
         </div>
         <div class="box_content">
             <slot></slot>
@@ -102,7 +102,7 @@ defineProps<Props>();
     opacity: .7;
 }
 
-.box_opertion {
+.box_operation {
     font-size: 18px;
     font-weight: 600;
     color: #31456A;

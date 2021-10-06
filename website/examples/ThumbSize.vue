@@ -4,7 +4,7 @@
         :desc="$t('desc')"
         codeSrc="https://github.com/custom-lib/custom-vue-scrollbar/blob/main/website/examples/ThumbSize.vue"
     >
-        <template #opertion>
+        <template #operation>
             <div class="operation">
                 <span :style="{ marginRight: '8px' }">thumbMinSize:</span> <input class="operation_input" type="number" v-model="thumbMinSize" />(px)
             </div>
@@ -47,13 +47,6 @@ let thumbMinSize = $ref(160);
 </script>
 
 <style lang="scss">
-.operation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
 .operation_input {
     all: unset;
     margin-right: 20px;

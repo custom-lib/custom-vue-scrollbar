@@ -1,7 +1,7 @@
 custom-vue-scrollbar(Vue3)
 =========================
 
- [custom-react-scrollbar(react版)](https://github.com/custom-lib/custom-react-scrollbar)
+ [custom-react-scrollbar (react版)](https://github.com/custom-lib/custom-react-scrollbar)
 
 中文 | [English](https://github.com/custom-lib/custom-vue-scrollbar/blob/main/READM.md)
 
@@ -20,6 +20,7 @@ custom-vue-scrollbar(Vue3)
 * typescript支持
 
 ## 引入
+
 ```bash
 npm install --save custom-vue-scrollbar
 ```
@@ -44,7 +45,9 @@ declare module 'vue' {
 ```javascript
 <template>
     <custom-scrollbar :style="{ width: '500px', height: '300px' }">
-        <p>Some great content...</p>
+        <div :style="{ width: '1000px', height: '600px' }">
+            Some great content...
+        </div>
     </custom-scrollbar>
 </template>
 ```
@@ -93,6 +96,7 @@ ResizeObserver监听 包裹/内容 容器的尺寸变化来更新滚动条的尺
 使用wheel模拟滚动代替原生滚动。在需要与外部浮动的元素同步滚动进度时开启，可以消除原生滚动在同步时 不在同一轮事件循环里 带来的抖动。
 
 ### Emit
+
 ```javascript
 interface Rect {
     left: number;
@@ -150,4 +154,5 @@ MIT
 
 
 ## custom-lib相关QQ群
+
 ![image](https://github.com/custom-lib/custom-vue-scrollbar/blob/main/website/assets/qrCode.jpg)

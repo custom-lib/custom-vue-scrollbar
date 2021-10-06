@@ -1,7 +1,7 @@
 custom-vue-scrollbar(Vue3)
 =========================
 
-[react version here.](https://github.com/custom-lib/custom-react-scrollbar)
+[custom-react-scrollbar (react version here)](https://github.com/custom-lib/custom-react-scrollbar)
 
 English | [中文](https://github.com/custom-lib/custom-vue-scrollbar/blob/main/README-zh_CN.md)
 
@@ -16,10 +16,11 @@ It's dependencies of custom-vue-table.
 * Floating scroll bar (when the scroll container exceeds the visible area of ​​the screen, the scroll bar is fixed at the bottom of the screen).
 * High performance.Optional debounce/throttle to observe size changes.。
 * Support native scroll mode (default) and simulate scroll mode (useful in scenes such as: scroll synchronously with outer float elements).
-* it's lightweight.16.5kb uncompressed, 4.5kb after compression (gzip).
+* it's lightweight. 16.5kb uncompressed, 4.5kb after compression (gzip).
 * typescript support.
 
 ## Install
+
 ```bash
 npm install --save custom-vue-scrollbar
 ```
@@ -44,7 +45,9 @@ Just give it a fixed size like using a native scroll container.
 ```javascript
 <template>
     <custom-scrollbar :style="{ width: '500px', height: '300px' }">
-        <p>Some content...</p>
+        <div :style="{ width: '1000px', height: '600px' }">
+            Some great content...
+        </div>
     </custom-scrollbar>
 </template>
 ```
@@ -82,7 +85,7 @@ When the scrolling is triggered, the scrollbar will be hidden only after the del
 Scroll bar default is 8px wide, the actual external has a 12px placeholder container, click, drag and drop logic is hanging on this placeholder container (convenient to click, 8px visually comfortable but difficult). When this option is turned on, the occupancy container hover, the scrollbar width will change to the width of the occupancy container.
 
 **fixedThumb** _`:boolean`_ = false
-The 'direction' property specifies the direction as the 'major axis direction'. When the 'fixedThumb' property is turned on, if the secondary axis has a scrollbar and the major axis has a scroll container that is partially off-screen. The scrollbars of the secondary axis will float to the edge of the screen.
+The 'direction' property specifies the direction as the 'major axis direction'. When the 'fixedThumb' property is turned on, if the secondary axis has a scrollbar and the major axis has a scroll container that is partially off-screen. The scrollbar of the secondary axis will float to the edge of the screen.
 
 **throttleType** _`:'throttle' | 'debounce' | 'none'`_ = 'debounce'
 ResizeObserver listens for changes in the size of the container/content DOM Node to update the size of the scrollbar. Most scenarios do not require a high refresh rate and using 'debounce' is sufficient in most scenarios.

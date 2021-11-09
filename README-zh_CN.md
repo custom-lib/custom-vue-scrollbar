@@ -40,16 +40,26 @@ declare module 'vue' {
 
 ## 基础用法
 
-像使用原生滚动容器一样给它设置一个固定的尺寸即可。
+像使用原生滚动容器一样给它设置一个固定的尺寸即可。原生的滚动api可以通过ref.scrollEl形式使用。
 
 ```javascript
 <template>
-    <custom-scrollbar :style="{ width: '500px', height: '300px' }">
+    <custom-scrollbar :style="{ width: '500px', height: '300px' }" ref="scroll">
         <div :style="{ width: '1000px', height: '600px' }">
             Some great content...
         </div>
     </custom-scrollbar>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+const scroll = ref<{ scrollEl: HTMLDivElement; }>();
+
+const handleClickScrollToTop = () => {
+    if (!scroll.value.scrollEl) return;
+    scroll.value.scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 ```
 
 ### Props

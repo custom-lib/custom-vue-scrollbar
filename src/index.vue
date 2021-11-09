@@ -185,6 +185,10 @@ const handleScroll = (evt: WheelEvent | UIEvent) => {
 
 watch(wrapperRect, () => emit('wrapperResize', wrapperRect));
 watch(contentRect, () => emit('contentResize', contentRect));
+
+defineExpose({
+    scrollEl: $$(wrapperEl),
+});
 </script>
 
 <style lang="scss">

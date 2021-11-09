@@ -40,7 +40,7 @@ declare module 'vue' {
 
 ## Basic Usage
 
-Just give it a fixed size like using a native scroll container.
+Just give it a fixed size like using a native scroll container.The native scroll api can be used via the ref.scrollEl.
 
 ```javascript
 <template>
@@ -50,6 +50,16 @@ Just give it a fixed size like using a native scroll container.
         </div>
     </custom-scrollbar>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+const scroll = ref<{ scrollEl: HTMLDivElement; }>();
+
+const handleClickScrollToTop = () => {
+    if (!scroll.value.scrollEl) return;
+    scroll.value.scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 ```
 
 

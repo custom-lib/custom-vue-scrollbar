@@ -19,6 +19,15 @@ It's dependencies of custom-vue-table.
 * it's lightweight. 16.5kb uncompressed, 4.5kb after compression (gzip).
 * typescript support.
 
+##### Why I write this lib
+
+1. I need a scrollbar that doesn't change the native scrolling mechanism to easily integrate with other components. Yes, I am referring to the better-scroll's transform simulation mechanism.
+2. I need to satisfy the above requirement of a floating scrollbar, which is not available in other scrollbar components in the community.
+3. I need a toggleable simulate scroll mode to synchronize the scrolling progress of the floating outer elements without delay. This can be satisfied by perfect-scrollbar, but it is too old, too heavy, too poor performance, and only supports simulated scrolling mode (under normal circumstances with native scroll mode performance is better, and touchpad sliding experience is more friendly).
+4. I need the interaction detail that the mouse gets bigger when it is close to the scrollbar to facilitate clicking. This is also available in perfect-scrollbar, but other better libraries such as react-scrollbars-custom don't support it.
+5. I need a scrollbar that is as close to native as possible, 0-intrusive, and lightweight. Other scrollbars in the community like to add some extra concepts, which makes me uncomfortable.
+6. I need a custom scrollbar with less performance drag. So: no excessive calculations at the js level, render method optimized as much as possible, css contain property would also help a lot. When I'm done with this and comparing the performance performance of other libraries in the community on an old machine, I confirm that custom-vue-scrollbar will outperform them all.
+
 ## Install
 
 ```bash

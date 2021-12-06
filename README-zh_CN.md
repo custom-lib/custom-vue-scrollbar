@@ -7,8 +7,6 @@ custom-vue-scrollbar(Vue3)
 
 **[Demos](https://custom-lib.github.io/custom-vue-scrollbar/)**
 
-是custom-vue-table的前置组件。
-
 * 很少的api，像原生滚动容器一样使用。
 * 可以自定义滚动条样式。
 * 支持滚动条最小尺寸/最大尺寸设置。
@@ -18,6 +16,15 @@ custom-vue-scrollbar(Vue3)
 * 支持 原生滚动模式（默认） 和 模拟滚动模式（用于如：与浮动元素同步滚动进度等场景）。
 * 很轻量，未压缩前16.5kb，压缩后4.5kb（gzip）。
 * typescript支持
+
+##### 我为什么会造一个自定义滚动条的新轮子
+
+1. 我需要一个不改变原生滚动机制的滚动条以很方便的与其他组件结合。没错我指的就是better-scroll的transform模拟机制。
+2. 我需要满足上述浮动滚动条的需求，这是社区中的其他滚动条组件没有的。
+3. 我需要可以切换的模拟滚动模式，用以浮动在外的元素同步滚动进度时不出现延时。这点perfect-scrollbar可以满足，但是它太古老太重性能太差，而且只支持模拟滚动模式（正常情况下用原生滚动模式性能更优，触控板滑动体验更友好）。
+4. 我需要鼠标靠近滚动条时候变大以方便点击这个交互细节。这点perfect-scrollbar也有，但是其他更新的库如react-scrollbars-custom等都不支持。
+5. 我需要一个使用上尽可能接近原生的，0侵入式的，轻量的滚动条。社区的其他滚动条喜欢加一些额外的概念，这让我很不舒服。
+6. 我需要性能拖累不那么大的自定义滚动条。因此：js层面不能有过多的计算，render方式尽可能优化，css的contain属性也会有很大帮助。当我做完这些，在老机子上对比社区其他库的性能表现，确认custom-vue-scrollbar会比它们都要优秀。
 
 ## 引入
 
@@ -64,7 +71,7 @@ const handleClickScrollToTop = () => {
 
 ### Props
 
-除以下组件Props，也可以使用所以原生DOM属性和事件。
+除以下组件Props，也可以使用所有原生DOM属性和事件。
 
 **class** _`:string`_ = undefined
 滚动容器class，一般只用来设置尺寸。

@@ -79,6 +79,12 @@ const handleClickScrollToTop = () => {
 **style** _`:object`_ = undefined
 滚动容器style。
 
+**wrapperClass** _`:string`_ = undefined
+包裹容器的class。
+
+**wrapperStyle** _`:object`_ = undefined
+包裹容器的style。
+
 **contentClass** _`:string`_ = undefined
 内容容器class，设置display、padding等的地方。
 
@@ -90,6 +96,9 @@ const handleClickScrollToTop = () => {
 
 **thumbMinSize / thumbMaxSize** _`:number`_ = 48 / Infinity  
 设置滚动条的 最小/最大 尺寸。
+
+**thumbWidth** _`:number`_ = 12
+设置滚动条的宽度。
 
 **autoHide** _`:boolean`_ = true  
 开启后，只有当鼠标悬浮于滚动容器上时才会显示滚动条。

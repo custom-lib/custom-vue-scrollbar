@@ -2,14 +2,14 @@
     <div
         v-show="Boolean(scrollInfo.thumbSize) && (fixedThumb ? isWrapperIntersecting : true)"
         :class="[
-            'scrollbar__thumbPlaceholder', 
-            `scrollbar__thumbPlaceholder--${type}`, 
+            'scrollbar__thumbPlaceholder',
+            `scrollbar__thumbPlaceholder--${type}`,
             {
                 ['scrollbar__thumbPlaceholder--autoHide']: autoHide,
                 ['scrollbar__thumbPlaceholder--autoExpand']: autoExpand,
             }
         ]"
-        :style="{ 
+        :style="{
             width: type === 'horizontal' ? `${scrollInfo.thumbSize}px`: '',
             height: type === 'vertical' ? `${scrollInfo.thumbSize}px` : '',
             position: !shouldFixed ? 'absolute' : 'fixed',
@@ -38,7 +38,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { throttle } from 'lodash-es';
-import { onUnmounted, watch } from 'vue';
+import { computed, onUnmounted, watch } from 'vue';
 
 interface Props {
     type: 'horizontal' | 'vertical';
@@ -52,9 +52,11 @@ interface Props {
         wrapperMainSize: number;
         boundaryDistance: number;
     };
+    thumbWidth?: number;
     wrapperEl: Element;
 }
 const props = defineProps<Props>();
+const computedThumbWidth = computed(() => `${props.thumbWidth ?? 12}px`)
 
 /** <--------------- mouse drag handler ---------------> */
 let autoHideTimer: number | null = null;
@@ -84,7 +86,7 @@ const handlePointerMove = throttle((evt: PointerEvent) => {
 
 const handlePointerEnd = () => {
     startAutoHideTimer();
-    
+
     thumbEl.removeEventListener('pointermove', handlePointerMove);
     thumbEl.removeEventListener('pointerup', handlePointerEnd);
     thumbEl.removeEventListener('pointercancel', handlePointerEnd);
@@ -172,13 +174,13 @@ onUnmounted(clearIO);
         top: 3px;
         right: 0;
 
-        width: 12px;
+        width: v-bind(computedThumbWidth);
     }
     &--horizontal {
         left: 3px;
         bottom: 0;
 
-        height: 12px;
+        height: v-bind(computedThumbWidth);
     }
 
     &--autoHide {

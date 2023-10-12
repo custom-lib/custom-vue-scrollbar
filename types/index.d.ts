@@ -12,6 +12,14 @@ export interface Rect {
 }
 
 declare const _default: import("vue").DefineComponent<{
+    wrapperClass: {
+        type: any;
+        required: false;
+    };
+    wrapperStyle: {
+        type: StyleValue;
+        required: false;
+    };
     class: {
         type: any;
         required: false;
@@ -47,6 +55,11 @@ declare const _default: import("vue").DefineComponent<{
         required: false;
         default: Infinity;
     };
+    thumbWidth: {
+        type: NumberConstructor;
+        required: false;
+        default: 12;
+    }
     autoHide: {
         type: BooleanConstructor;
         required: false;
@@ -78,12 +91,15 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, {
     props: {
+        wrapperClass?: string | undefined;
+        wrapperStyle?: StyleValue | undefined;
         contentClass?: string | undefined;
         contentStyle?: StyleValue | undefined;
         direction: 'horizontal' | 'vertical';
         fixedThumb?: boolean | undefined;
         thumbMinSize: number;
         thumbMaxSize: number;
+        thumbWidth: number;
         autoHide: boolean;
         autoHideDelay: number;
         autoExpand: boolean;
@@ -100,10 +116,13 @@ declare const _default: import("vue").DefineComponent<{
     style?: StyleValue | undefined;
     contentClass?: string | undefined;
     contentStyle?: StyleValue | undefined;
+    wrapperClass?: string | undefined;
+    wrapperStyle?: StyleValue | undefined;
     direction?: 'horizontal' | 'vertical';
     fixedThumb?: boolean;
     thumbMinSize?: number;
     thumbMaxSize?: number;
+    thumbWidth?: number;
     autoHide?: boolean;
     autoHideDelay?: number;
     autoExpand?: boolean;

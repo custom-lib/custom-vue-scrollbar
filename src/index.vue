@@ -1,5 +1,8 @@
 <template>
-    <div class="scrollbar__wrapper">
+    <div
+        :class="['scrollbar__wrapper', wrapperClass]"
+        :style="wrapperStyle"
+    >
         <div
             ref="wrapperEl"
             class="scrollbar__scroller"
@@ -26,6 +29,7 @@
             :fixedThumb="(thumbType === direction ? false : fixedThumb)"
             :type="thumbType"
             :scrollInfo="thumbType === 'vertical' ? scrollHeightInfo : scrollWidthInfo"
+            :thumbWidth="thumbWidth"
             :wrapperEl="wrapperEl"
         />
     </div>
@@ -47,12 +51,15 @@ import type { Rect } from './useMeasure';
 import useMeasure from './useMeasure';
 
 interface Props extends HTMLAttributes {
+    wrapperClass?: string;
+    wrapperStyle?: StyleValue;
     contentClass?: string;
     contentStyle?: StyleValue;
     /** Set major scroll direction.Will auto set the scroll container element display to 'horizontal' -> 'inline-flex' / 'vertical' -> 'block'('inline-block' if fixedThumb). */
     direction?: 'horizontal' | 'vertical';
     thumbMinSize?: number;
     thumbMaxSize?: number;
+    thumbWidth?: number
     autoHide?: boolean;
     autoHideDelay?: number;
     autoExpand?: boolean;
@@ -72,6 +79,7 @@ const props = withDefaults(defineProps<Props>(), {
     throttleWait: 333,
     thumbMinSize: 48,
     thumbMaxSize: Infinity,
+    thumbWidth: 12
 });
 
 const emit = defineEmits<{
@@ -111,7 +119,7 @@ function updateMaxScrollDistance() { // Recalculate native scrollable distance s
 }
 let scrollWidthInfo = $computed(() => {
     return {
-        thumbSize : nativeMaxScrollLeft ? 
+        thumbSize : nativeMaxScrollLeft ?
             clamp(
                 wrapperRect.width / wrapperEl.scrollWidth *  wrapperRect.width,
                 props.thumbMinSize > wrapperRect.width ? 48 : props.thumbMinSize,

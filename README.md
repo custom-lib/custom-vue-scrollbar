@@ -82,6 +82,12 @@ Container class, which is generally only used to set the size.
 **style** _`:object`_ = undefined
 Container style.
 
+**wrapperClass** _`:string`_ = undefined
+Wrapper class, the place to set display, padding, etc.
+
+**wrapperStyle** _`:object`_ = undefined
+Wrapper style.
+
 **contentClass** _`:string`_ = undefined
 Content class, the place to set display, padding, etc.
 
@@ -93,6 +99,9 @@ If you need to change the content container to horizontal layout, you can set th
 
 **thumbMinSize / thumbMaxSize** _`:number`_ = 48 / Infinity  
 Sets the minimum/maximum size of the scrollbar.
+
+**thumbWidth** _`:number`_ = 12
+Set the width of the scrollbar thumb.
 
 **autoHide** _`:boolean`_ = true  
 When turned on, the scrollbar will be displayed only when the mouse hovers over the scroll container.
